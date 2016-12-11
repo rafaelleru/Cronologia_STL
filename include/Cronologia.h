@@ -96,5 +96,109 @@ public:
     Iterator& operator==(const Iterator& i);
 
     
+    /**
+     * @brief Operador que comprueba si son diferentes
+     * @param i Objeto de Iterator 
+     */
+    bool operator!=(const Iterator& i);
+
+    /**
+     * @brief Devuelve el inicio de la Cronologia 
+     */
+    Iterator begin();
+
+    
+    /**
+     * @brief Devuelve el fin de la Cronologia 
+     */
+    Iterator end();
+
+    /**
+     * @brief Inserta los datos de los dos iteradores en la cronologia
+     * @param it Objeto de Iterator
+     * @param it2 Objeto de Iterator
+     */
+    void insert(const Iterator& it, const Iterator& it2);
+    
+    /**
+     * @brief Inserta el e a partir del iterador it
+     * @param it Objeto de Iterator
+     * @param e Objeto de EventoHistorico
+     */
+    void insert(const Iterator& it, const EventoHistorico& e);
+
+    //Clase const_Iterator
+
+    class const_Iterator{
+    public:
+      vector<EventoHistorico>::const_iterator it;
+
+      
+    /**
+     * @brief Operador de incremento
+     */
+    const_Iterator& operator++();
+    
+    /**
+     * @brief Operador de descremento
+     */
+    const_Iterator& operator--();
+
+    /**
+     * @brief Operador de acceso
+     */
+    const_Iterator& operator*();
+
+    /**
+     * @brief Operador que comprueba si son iguales
+     * @param i Objeto de const_Iterator 
+     */
+    bool operator==(const cosnt_Iterator& i);
+
+    /**
+     * @brief Operador que comprueba si son distintos
+     * @param i Objeto de Iterator 
+     */
+    bool operator!=(const const_Iterator& i);
+    
+    /**
+     * @brief Devuelve el comienzo de const_Iterator
+     */
+    const_Iterator begin_const() const;
+    
+    /**
+     * @brief Devuelve el final de const_Iterator
+     */
+    const_Iterator end_const() const;
+    
+    // Funciones para operar en cronologias
+    
+    /**
+     * @brief Union con un objeto que le pasas por parametro
+     * @param c Objeto constante de Cronologia
+     */
+    void join(const Cronologia& c);
+    
+    /**
+     * @brief Intercambia por el objeto que le pasas por parametro
+     * @param c Objeto de Cronologia
+     */
+    void swap(Cronologia& c);
+    
+    /**
+     * @brief Busca en un intervalo
+     * @param begin Entero que marca comienzo
+     * @param end Entero que marca final
+     */
+    Cronologia& findByInterval(int begin, int end) const;
+    
+    /**
+     * @brief Saca estadisticas
+     */
+    void findStadistics() const;
+    
+    };//Fin clase const_Iterator
   };//Fin clase Iterator
 }; //Fin clase Cronologia
+
+#endif
